@@ -59,7 +59,7 @@ class DQNAgent:
             self.epsilon *= self.epsilon_decay
 
     def load(self, name):
-        self.model.load_weights(name)
+        self.model.load_weights(name).expect_partial()
 
     def save(self, name):
         self.model.save_weights(name)

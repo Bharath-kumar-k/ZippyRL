@@ -1,24 +1,35 @@
 from env import Robot
 from AgentDQN import DQNAgent
 from train import *
+from test import *
 
 
-# Create the environment and agent
-env = Robot()
-agent = DQNAgent(env.state_size, env.action_size)
+# Choose what to be done - "train" or "test"
+choice = "train"
+# File name to be saved/retrieved
+fName = '/home/bharath.kumar/code/ZippyRL/DQN_saved_weights'
 
-# Train the agent
+# training Parameters
 episodes = 10000
 batch_size = 32
-fName = '/home/bharath.kumar/code/ZippyRL/DQN_saved_weights'
-# train_agent(env, agent, episodes, batch_size, fileName=fName, verbose=True)
-test_agent(env, agent, verbose=True, fileName=fName+'/saved_weights'+str(600), plotFlag=True)
+load_file_number_train = 140 # Start your training from --
 
-# # Define the parameters
-# target = 10
-# v0 = 0.0
-# a0 = 0.0
+# testing Parameter
+load_file_number_test = 100 # Test your testing from saved_weights from --
 
-# Save the model
-# test_agent(env, agent)
-# Load the saved model
+
+if __name__ == "__main__":
+    # Create the environment and agent
+    env = Robot()
+    agent = DQNAgent(env.state_size, env.action_size)
+
+    if choice == "train":
+        # Load from where ever its needed
+
+        # Train the agent
+        train_agent(env, agent, episodes, batch_size, fileName=fName, verbose=True, load_file_number_train=load_file_number_train)
+    elif choice == "test":
+        testAgent = test_agent(env, agent, verbose=True, fileName=fName+'/saved_weights'+str(load_file_number))
+        testAgent.animate()
+    else:
+        print(" -%- ")
