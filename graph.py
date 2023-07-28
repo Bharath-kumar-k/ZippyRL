@@ -20,7 +20,7 @@ class Graph:
         self.adjList = dict();
         self.adjMatrix = []
         self.nodeDictMap = dict()
-        data = readFromJson('/home/bharath.kumar/code/VelocityProfileS/config/node_edge_info.json')
+        data = readFromJson('/home/bharath.kumar/code/ZippyRL/config/node_edge_info.json')
         self.__populateNodes(nodesMap=data['nodes'])
         self.__populateEdges(edgeMap=data['edges'])
         self.__populateAdj()
